@@ -73,7 +73,7 @@ with export(str(current_dir / "thai-eselsbreucken.pdf")) as book:
         with book.page:
             # Draw the title
             font(font_name, size=14, tracking=15)
-            text("ТАЙСКИЙ ЯЗЫК — ESELSBRÜКЕN", left_margin, left_margin + 10)
+            text("ТАЙСКИЙ ЯЗЫК — ESELSBRÜCКЕN", left_margin, left_margin + 10)
             
             # Draw the URL and last edit date at the top right
             align(RIGHT)
