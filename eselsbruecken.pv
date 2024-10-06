@@ -1,6 +1,7 @@
 import re
 from datetime import datetime
 from pathlib import Path
+from math import ceil
 
 def read_md_file(filepath):
     """
@@ -35,7 +36,7 @@ left_margin = 30
 top_margin = 100
 row_width = 185
 row_height = 38
-page_size = 17
+page_size = 19
 letter_size = 20
 mnemonic_size = 14
 font_name = "Linux Libertine"
@@ -56,7 +57,7 @@ def draw_row(thai, mnemonic, x, y):
     """
     # Define stylesheets for italic and bold text in mnemonics
     stylesheet("i", italic=True, fill="#002c7b")
-    stylesheet("b", italic=True, fill="#888888")
+    stylesheet("b", italic=False, fill="#888888", weight="bold")
 
     # Draw Thai text
     font("Sarabun", size=letter_size, weight="regular", italic=False)
@@ -68,7 +69,8 @@ def draw_row(thai, mnemonic, x, y):
     text(x + row_width, y - 3, xml=mnemonic)
 
 with export(str(current_dir / "thai-eselsbreucken.pdf")) as book:
-    pages = round(len(thai_texts) / page_size)
+    pages = ceil(len(thai_texts) / (1.0 * page_size))
+    print(len(thai_texts))
     for page_number in range(pages):
         with book.page:
             # Draw the title
