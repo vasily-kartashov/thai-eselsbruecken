@@ -33,10 +33,10 @@ page_width = 612
 page_height = 842
 left_margin = 30
 top_margin = 100
-row_width = 165
-row_height = 44
+row_width = 185
+row_height = 38
 page_size = 17
-letter_size = 24
+letter_size = 20
 mnemonic_size = 14
 font_name = "Linux Libertine"
 
