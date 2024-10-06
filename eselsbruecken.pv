@@ -1,0 +1,97 @@
+import re
+from datetime import datetime
+from pathlib import Path
+
+def read_md_file(filepath):
+    """
+    Reads a markdown file and extracts Thai text and mnemonics.
+    Applies formatting to the mnemonics.
+    Returns two lists: thai_texts and mnemonics.
+    """
+    thai_texts = []
+    mnemonics = []
+    with open(filepath, 'r', encoding='utf-8') as file:
+        for line in file:
+            if '|' in line:
+                parts = line.strip().split('|')
+                if len(parts) == 2:
+                    thai = parts[0].strip()
+                    mnemonic = parts[1].strip()
+                    # Replace *text* with <b>text</b> and _text_ with <i>text</i> in mnemonic
+                    mnemonic = re.sub(r'\*(.*?)\*', r'<b>\1</b>', mnemonic)
+                    mnemonic = re.sub(r'_(.*?)_', r'<i>\1</i>', mnemonic)
+                    thai_texts.append(thai)
+                    mnemonics.append(mnemonic)
+    return thai_texts, mnemonics
+
+# Read Thai texts and mnemonics from file
+current_dir = Path(__file__).parent
+thai_texts, mnemonics = read_md_file(current_dir / "eselsbruecken.md")
+
+# Page layout settings
+page_width = 612
+page_height = 842
+left_margin = 30
+top_margin = 100
+row_width = 165
+row_height = 44
+page_size = 17
+letter_size = 24
+mnemonic_size = 14
+font_name = "Linux Libertine"
+
+# Initialize the page
+size(page_width, page_height)
+background(1)
+
+# Set default font
+font(font_name, size=11)
+
+# Define styles for text formatting
+stylesheet("initial", weight="bold")
+
+def draw_row(thai, mnemonic, x, y):
+    """
+    Draws a single row consisting of Thai text and its mnemonic.
+    """
+    # Define stylesheets for italic and bold text in mnemonics
+    stylesheet("i", italic=True, fill="#002c7b")
+    stylesheet("b", italic=True, fill="#888888")
+
+    # Draw Thai text
+    font("Sarabun", size=letter_size, weight="regular", italic=False)
+    fill(0)
+    text(thai, x, y)
+
+    # Draw mnemonic text
+    font(font_name, size=mnemonic_size)
+    text(x + row_width, y - 3, xml=mnemonic)
+
+with export(str(current_dir / "thai-eselsbreucken.pdf")) as book:
+    pages = round(len(thai_texts) / page_size)
+    for page_number in range(pages):
+        with book.page:
+            # Draw the title
+            font(font_name, size=14, tracking=15)
+            text("ТАЙСКИЙ ЯЗЫК — ESELSBRÜКЕN", left_margin, left_margin + 10)
+            
+            # Draw the URL and last edit date at the top right
+            align(RIGHT)
+            font(font_name, size=9, italic=True, tracking=0)
+            stroke(0)
+            fill(0.5)
+            current_date = datetime.today().strftime('%d/%m/%Y')
+            text(f"https://github.com/vasily-kartashov/thai-eselsbruecken • Последняя правка {current_date}", page_width - left_margin, left_margin + 10)
+            font(italic=False)
+            
+            # Reset alignment to left for the rest of the text
+            align(LEFT)
+            pen(0.5)
+            
+            a, b = page_number * page_size, (page_number + 1) * page_size
+            
+            # Draw each row of Thai text and mnemonic
+            for i, (thai, mnemonic) in enumerate(zip(thai_texts[a:b], mnemonics[a:b])):
+                y_position = top_margin + row_height * i
+                draw_row(thai, mnemonic, left_margin, y_position)
+
