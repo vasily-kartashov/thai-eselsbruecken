@@ -67,3 +67,11 @@
 แห้ง แห่ง      | *hang* it in a _dry_ _place_
 ช่วย          | *chewie* will _help_ us
 ใส่           | an _add_ed *sigh*
+ลิง ลิ้น        | _monkey_ showed a _tongue_
+สอน          | *son*, I will _teach_ you
+จุดเทียน       | *чуть* *ты*, *Ян*, _зажжешь_ _свечу_
+เดือน         | _месяц_ *дыан*ь
+แข็ง แขน      | *khang*ooroos have _hard_ _forearms_
+ยืน           | stand
+ตะโกน        | *так он* _криклив_
+ยาย ย้าย      | ай-*яй*, _мама мамы_ уже *поехала*
