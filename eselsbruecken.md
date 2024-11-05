@@ -73,3 +73,14 @@
 ยืน           | stand
 ตะโกน        | *так он* _криклив_
 ยาย ย้าย      | ай-*яй*, _мама мамы_ уже *поехала*
+ตลอด         | during, while, throughout
+โยน         ​ | throw, hurl
+ยืนขึ้น         | stand up
+ตะโกน        | shout
+หิน           | rock, stone
+ปีหน้า         | *пина*л до _следущего года_
+เมื่อ          | when, while
+ดูแล          | _позаботься_ о *дуле*
+เมื่อกี้         | *Mikkey* arrived _just now_
+เมื่อไหร่       | when?
+สิ้น           | a *sin*ful _end_
