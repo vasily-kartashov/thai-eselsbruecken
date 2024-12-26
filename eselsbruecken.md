@@ -76,7 +76,7 @@
 ตลอด         | during, while, throughout
 โยน         ​ | throw, hurl
 ยืนขึ้น         | stand up
-ตะโกน        | shout
+ตะโกน        | *так он* _кричал_
 หิน           | rock, stone
 ปีหน้า         | *пина*л до _следущего года_
 เมื่อ          | when, while
